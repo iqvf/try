@@ -42,8 +42,8 @@ function Keysys:MakeUI(KeySettings)
     KeyMain.NoteMessage.DiscordBtn.TextTransparency = 1
     KeyMain.Hide.ImageTransparency = 1
 
-    KeyMain.Title.Text = KeySettings.Title or "Unknow Title"
-    KeyMain.NoteMessage.DiscordBtn.Text = "discord.gg/" ..KeySettings.DiscordID
+    KeyMain.Title.Text = KeySettings.Title or "Unknown Title"
+    KeyMain.NoteMessage.DiscordBtn.Text = "" ..KeySettings.DiscordID
 
     local function AddDraggingFunctionality(DragPoint, Main)
         pcall(function()
