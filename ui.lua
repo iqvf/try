@@ -43,7 +43,7 @@ function Keysys:MakeUI(KeySettings)
     KeyMain.Hide.ImageTransparency = 1
 
     KeyMain.Title.Text = KeySettings.Title or "Unknown Title"
-    KeyMain.NoteMessage.DiscordBtn.Text = "" ..KeySettings.DiscordID
+    KeyMain.NoteMessage.DiscordBtn.Text = "discord.gg/" ..KeySettings.DiscordID
 
     local function AddDraggingFunctionality(DragPoint, Main)
         pcall(function()
@@ -131,7 +131,7 @@ function Keysys:MakeUI(KeySettings)
 
     -- copy dicord server
     KeyMain.NoteMessage.DiscordBtn.MouseButton1Click:Connect(function()
-        print("You pressed something.")
+        setclipboard("https://discord.gg/" .. KeySettings.DiscordID)
     end)
 
     KeyMain.NoteMessage.DiscordBtn.MouseEnter:Connect(function()
@@ -149,9 +149,9 @@ function Keysys:MakeUI(KeySettings)
         local is_key_present = isfile(KeySettings.Title .. ".txt");
         if is_key_present == true then
             local kery = readfile(KeySettings.Title .. ".txt");
-            local onl_key = game:HttpGet("https://keysystem.ml/verify/".. KeySettings.KeyLinkName .."?verify_key=" .. kery)
+            local onl_key = game:HttpGet("https://keysystem.cf/verify/".. KeySettings.KeyLinkName .."?verify_key=" .. kery)
             if kery == onl_key then
-                notif:Notification("Sucefful", "Key valid lets start", 3)
+                notif:Notification("✅", "Key is vaild, loading...", 3)
                 loadstring(game:HttpGet(KeySettings.ScriptLink))()
                 TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Quint), { BackgroundTransparency = 1 })
                     :
@@ -201,11 +201,11 @@ function Keysys:MakeUI(KeySettings)
                 wait(0.51)
                 KeyUI:Destroy()
             else
-                notif:Notification("Warning", "Key not valid try again", 3)
+                notif:Notification("❌", "Key is invaild", 3)
             end
         else
             if KeyMain.Input.InputBox.Text ==
-                game:HttpGet("https://keysystem.ml/verify/".. KeySettings.KeyLinkName .."?verify_key=" .. KeyMain.Input.InputBox.Text) then
+                game:HttpGet("https://keysystem.cf/verify/".. KeySettings.KeyLinkName .."?verify_key=" .. KeyMain.Input.InputBox.Text) then
                 TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Quint), { BackgroundTransparency = 1 })
                     :
                     Play()
@@ -252,10 +252,10 @@ function Keysys:MakeUI(KeySettings)
                 wait(0.51)
                 writefile(KeySettings.Title .. ".txt", KeyMain.Input.InputBox.Text)
                 local readfilekey = readfile(KeySettings.Title .. ".txt");
-                if KeyMain.Input.InputBox.Text == game:HttpGet("https://keysystem.ml/verify/".. KeySettings.KeyLinkName .."?verify_key=" .. KeyMain.Input.InputBox.Text) then -- checkkey no have file
+                if KeyMain.Input.InputBox.Text == game:HttpGet("https://keysystem.cf/verify/".. KeySettings.KeyLinkName .."?verify_key=" .. KeyMain.Input.InputBox.Text) then -- checkkey no have file
                     loadstring(game:HttpGet(KeySettings.ScriptLink))()
                     appendfile(KeySettings.Title .. ".txt", KeyMain.Input.InputBox.Text);
-                    notif:Notification("Sucefful", "Key valid lets start", 3)
+                    notif:Notification("✅", "Key is vaild, loading...", 3)
                     TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Quint),
                         { BackgroundTransparency = 1 })
                         :
@@ -308,13 +308,13 @@ function Keysys:MakeUI(KeySettings)
                     wait(0.51)
                     KeyUI:Destroy()
                 else -- wrong key
-                    notif:Notification("Warning", "Key not valid try again", 3)
+                    notif:Notification("❌", "Key isn't vaild.", 3)
                 end
-                if game:HttpGet("https://keysystem.ml/verify/".. KeySettings.KeyLinkName .."?verify_key=" .. KeyMain.Input.InputBox.Text)
+                if game:HttpGet("https://keysystem.cf/verify/".. KeySettings.KeyLinkName .."?verify_key=" .. KeyMain.Input.InputBox.Text)
                     ==
                     readfilekey then -- check key on maked file
                     loadstring(game:HttpGet(KeySettings.ScriptLink))()
-                    notif:Notification("Sucefful", "Key valid lets start", 3)
+                    notif:Notification("✅", "Key is vaild, loading...", 3)
                     appendfile(KeySettings.Title .. ".txt", KeyMain.Input.InputBox.Text);
                     TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Quint),
                         { BackgroundTransparency = 1 })
@@ -368,7 +368,7 @@ function Keysys:MakeUI(KeySettings)
                     wait(0.51)
                     KeyUI:Destroy()
                 else -- wrong key
-                    notif:Notification("Warning", "Key not valid try again", 3)
+                    notif:Notification("❌", "Key expired, get a new one", 3)
                 end
             end
         end
@@ -387,9 +387,9 @@ function Keysys:MakeUI(KeySettings)
     local is_key_present = isfile(KeySettings.Title .. ".txt");
     if is_key_present == true then
         local kery = readfile(KeySettings.Title .. ".txt");
-        local onl_key = game:HttpGet("https://keysystem.ml/verify/".. KeySettings.KeyLinkName .."?verify_key=" .. kery)
+        local onl_key = game:HttpGet("https://keysystem.cf/verify/".. KeySettings.KeyLinkName .."?verify_key=" .. kery)
         if kery == onl_key then
-            notif:Notification("Sucefful", "Key valid lets start", 3)
+            notif:Notification("✅", "Key is vaild, loading...", 3)
             loadstring(game:HttpGet(KeySettings.ScriptLink))()
             TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Quint), { BackgroundTransparency = 1 }):
                 Play()
@@ -429,7 +429,7 @@ function Keysys:MakeUI(KeySettings)
             wait(0.51)
             KeyUI:Destroy()
         else
-            notif:Notification("Warning", "Key not valid try again", 3)
+            notif:Notification("❌", "Key isn't vaild.", 3)
         end
     end
 
