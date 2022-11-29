@@ -42,7 +42,7 @@ function Keysys:MakeUI(KeySettings)
     KeyMain.NoteMessage.DiscordBtn.TextTransparency = 1
     KeyMain.Hide.ImageTransparency = 1
 
-    KeyMain.Title.Text = KeySettings.Title or "Unknow Title"
+    KeyMain.Title.Text = KeySettings.Title or "Unknown Title"
     KeyMain.NoteMessage.DiscordBtn.Text = "discord.gg/" ..KeySettings.DiscordID
 
     local function AddDraggingFunctionality(DragPoint, Main)
@@ -151,7 +151,7 @@ function Keysys:MakeUI(KeySettings)
             local kery = readfile(KeySettings.Title .. ".txt");
             local onl_key = game:HttpGet("https://keysystem.ml/verify/".. KeySettings.KeyLinkName .."?verify_key=" .. kery)
             if kery == onl_key then
-                notif:Notification("Sucefful", "Key valid lets start", 3)
+                notif:Notification("✅", "Key is vaild, loading...", 3)
                 loadstring(game:HttpGet(KeySettings.ScriptLink))()
                 TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Quint), { BackgroundTransparency = 1 })
                     :
@@ -201,7 +201,7 @@ function Keysys:MakeUI(KeySettings)
                 wait(0.51)
                 KeyUI:Destroy()
             else
-                notif:Notification("Warning", "Key not valid try again", 3)
+                notif:Notification("❌", "Key is invaild.", 3)
             end
         else
             if KeyMain.Input.InputBox.Text ==
@@ -308,7 +308,8 @@ function Keysys:MakeUI(KeySettings)
                     wait(0.51)
                     KeyUI:Destroy()
                 else -- wrong key
-                    notif:Notification("❌", "Key is invaild."
+                    notif:Notification("❌", "Key is invaild.", 3)
+                end
                 if game:HttpGet("https://keysystem.ml/verify/".. KeySettings.KeyLinkName .."?verify_key=" .. KeyMain.Input.InputBox.Text)
                     ==
                     readfilekey then -- check key on maked file
