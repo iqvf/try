@@ -152,7 +152,7 @@ function Keysys:MakeUI(KeySettings)
             local onl_key = game:HttpGet("https://keysystem.ml/verify/".. KeySettings.KeyLinkName .."?verify_key=" .. kery)
             if kery == onl_key then
                 notif:Notification("✅", "Key is vaild, loading...", 3)
-                KeySettings.ScriptLink
+loadstring(game:HttpGet(KeySettings.ScriptLink))()
                 TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Quint), { BackgroundTransparency = 1 })
                     :
                     Play()
